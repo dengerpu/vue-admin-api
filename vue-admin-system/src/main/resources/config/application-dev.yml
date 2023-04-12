@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: vue-admin
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource            # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver             # mysql驱动包
+    url: jdbc:mysql://localhost:3306/vue-admin?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+
+mybatis-plus:
+  configuration:
+    # 配置mybatis日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  # 配置类型别名
+  type-aliases-package: com.ep.entity
+  mapper-locations: classpath*:/com/ep/mapper/*.xml
