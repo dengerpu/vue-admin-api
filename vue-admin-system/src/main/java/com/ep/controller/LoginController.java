@@ -4,10 +4,7 @@ import com.ep.entity.User;
 import com.ep.service.LoginService;
 import com.ep.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /***
  * @author dep
@@ -24,5 +21,10 @@ public class LoginController {
     @PostMapping("/login")
     public ResultInfo login(@RequestBody User user) {
         return loginService.login(user);
+    }
+
+    @GetMapping("/logout")
+    public ResultInfo logout() {
+        return loginService.logout();
     }
 }

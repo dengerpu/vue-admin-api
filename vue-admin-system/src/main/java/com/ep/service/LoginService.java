@@ -16,4 +16,11 @@ public interface LoginService {
      * @return
      */
     public ResultInfo login(User user);
+
+
+    /**
+     * 退出
+     * @return
+     */
+    public ResultInfo logout();
 }
