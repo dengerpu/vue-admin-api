@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class ResultInfo {
 
-    private int status;           //状态码
+    private int code;           //状态码
 
     private String message;      //错误信息
 
@@ -33,7 +33,7 @@ public class ResultInfo {
      */
     public static  ResultInfo success(Object data) {
         ResultInfo info = new ResultInfo();
-        info.setStatus(ReturnCode.S200.getCode());
+        info.setCode(ReturnCode.S200.getCode());
         info.setMessage(ReturnCode.S200.getMessage());
         info.setData(data);
         return info;
@@ -47,7 +47,7 @@ public class ResultInfo {
      */
     public static ResultInfo success(int code, String message, Object data) {
         ResultInfo info = new ResultInfo();
-        info.setStatus(code);
+        info.setCode(code);
         info.setMessage(message);
         info.setData(data);
         return info;
@@ -61,7 +61,7 @@ public class ResultInfo {
      */
     public static ResultInfo fail(int code, String message) {
         ResultInfo info = new ResultInfo();
-        info.setStatus(code);
+        info.setCode(code);
         info.setMessage(message);
         return info;
     }
