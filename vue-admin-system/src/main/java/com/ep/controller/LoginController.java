@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
  * @date 2023-04-11 22:07
  */
 @RestController
-@RequestMapping("/user")
 public class LoginController {
 
     @Autowired
