@@ -7,7 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>vue-admin-commons</module>
-    <module>vue-admin-system</module>
     <module>vue-admin-generator</module>
     <module>vue-admin-logging</module>
     <module>vue-admin-tools</module>
