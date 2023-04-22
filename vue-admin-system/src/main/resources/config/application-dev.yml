@@ -15,3 +15,9 @@ mybatis-plus:
   # 配置类型别名
   type-aliases-package: com.ep.entity
   mapper-locations: classpath*:/com/ep/mapper/*.xml
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG

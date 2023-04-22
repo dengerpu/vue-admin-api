@@ -34,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 //关闭csrf
                 .csrf().disable()
+                // 关闭默认注销接口
+                .logout().disable()
                 //不通过Session获取SecurityContext
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -41,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/login").anonymous()
                 //注销接口需要认证才能访问
-//                .antMatchers("/user/logout").authenticated()
+                .antMatchers("/logout").authenticated()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 
