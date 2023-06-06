@@ -1,7 +1,7 @@
-package com.ep.controller;
+package com.ep.modules.system.controller;
 
-import com.ep.entity.User;
-import com.ep.service.LoginService;
+import com.ep.modules.system.entity.User;
+import com.ep.modules.system.service.LoginService;
 import com.ep.utils.ResultInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

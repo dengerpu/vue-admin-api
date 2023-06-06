@@ -1,8 +1,7 @@
-package com.ep.controller;
+package com.ep.modules.system.controller;
 
-import com.ep.entity.UserInfo;
-import com.ep.mapper.UserInfoMapper;
-import com.ep.service.UserService;
+import com.ep.modules.system.entity.UserInfo;
+import com.ep.modules.system.service.UserService;
 import com.ep.utils.JwtUtil;
 import com.ep.utils.ResultInfo;
 import io.jsonwebtoken.Claims;

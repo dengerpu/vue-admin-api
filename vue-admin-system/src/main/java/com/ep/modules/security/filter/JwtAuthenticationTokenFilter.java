@@ -1,6 +1,6 @@
-package com.ep.filter;
+package com.ep.modules.security.filter;
 
-import com.ep.entity.LoginUser;
+import com.ep.modules.system.entity.LoginUser;
 import com.ep.utils.JwtUtil;
 import com.ep.utils.RedisCache;
 import io.jsonwebtoken.Claims;

@@ -1,11 +1,9 @@
-package com.ep.service.impl;
+package com.ep.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ep.entity.User;
-import com.ep.entity.UserInfo;
-import com.ep.mapper.UserInfoMapper;
-import com.ep.mapper.UserMapper;
-import com.ep.service.UserService;
+import com.ep.modules.system.entity.UserInfo;
+import com.ep.modules.system.mapper.UserInfoMapper;
+import com.ep.modules.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

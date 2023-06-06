@@ -1,7 +1,7 @@
-package com.ep.mapper;
+package com.ep.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ep.entity.UserInfo;
+import com.ep.modules.system.entity.UserInfo;
 import org.springframework.stereotype.Repository;
 
 /***

@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2023-04-10 20:41
  */
 @SpringBootApplication
-@MapperScan("com.ep.mapper")
+@MapperScan("com.ep.modules.system.mapper")
 public class VueAdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(VueAdminApplication.class, args);

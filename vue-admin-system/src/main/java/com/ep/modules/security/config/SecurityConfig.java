@@ -1,6 +1,6 @@
-package com.ep.config;
+package com.ep.modules.security.config;
 
-import com.ep.filter.JwtAuthenticationTokenFilter;
+import com.ep.modules.security.filter.JwtAuthenticationTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
+                .antMatchers("/test/*").anonymous()
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/login").anonymous()
                 //注销接口需要认证才能访问

@@ -1,4 +1,4 @@
-package com.ep.entity;
+package com.ep.modules.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

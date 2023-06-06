@@ -1,9 +1,8 @@
-package com.ep.mapper;
+package com.ep.modules.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ep.entity.User;
+import com.ep.modules.system.entity.User;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 /***

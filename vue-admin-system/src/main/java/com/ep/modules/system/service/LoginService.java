@@ -1,6 +1,6 @@
-package com.ep.service;
+package com.ep.modules.system.service;
 
-import com.ep.entity.User;
+import com.ep.modules.system.entity.User;
 import com.ep.utils.ResultInfo;
 
 /***

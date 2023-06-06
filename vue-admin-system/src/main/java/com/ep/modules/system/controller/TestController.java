@@ -1,4 +1,4 @@
-package com.ep.controller;
+package com.ep.modules.system.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,9 +1,9 @@
-package com.ep.service.impl;
+package com.ep.modules.system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.ep.entity.LoginUser;
-import com.ep.entity.User;
-import com.ep.mapper.UserMapper;
+import com.ep.modules.system.entity.LoginUser;
+import com.ep.modules.system.entity.User;
+import com.ep.modules.system.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

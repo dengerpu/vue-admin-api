@@ -2,8 +2,8 @@ package com.ep;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ep.entity.User;
-import com.ep.mapper.UserMapper;
+import com.ep.modules.system.entity.User;
+import com.ep.modules.system.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

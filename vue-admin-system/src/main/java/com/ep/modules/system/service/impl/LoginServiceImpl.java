@@ -1,8 +1,8 @@
-package com.ep.service.impl;
+package com.ep.modules.system.service.impl;
 
-import com.ep.entity.LoginUser;
-import com.ep.entity.User;
-import com.ep.service.LoginService;
+import com.ep.modules.system.entity.LoginUser;
+import com.ep.modules.system.entity.User;
+import com.ep.modules.system.service.LoginService;
 import com.ep.utils.JwtUtil;
 import com.ep.utils.RedisCache;
 import com.ep.utils.ResultInfo;

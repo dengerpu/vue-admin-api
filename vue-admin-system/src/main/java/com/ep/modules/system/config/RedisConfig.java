@@ -1,4 +1,4 @@
-package com.ep.config;
+package com.ep.modules.system.config;
 
 import com.ep.utils.FastJsonRedisSerializer;
 import org.springframework.context.annotation.Bean;

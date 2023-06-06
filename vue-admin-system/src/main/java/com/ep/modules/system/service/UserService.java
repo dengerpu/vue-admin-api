@@ -1,6 +1,6 @@
-package com.ep.service;
+package com.ep.modules.system.service;
 
-import com.ep.entity.UserInfo;
+import com.ep.modules.system.entity.UserInfo;
 
 /***
  * @author dep
