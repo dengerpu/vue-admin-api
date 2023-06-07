@@ -48,7 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/test/*").anonymous()
+                // 直接放行（登陆没登录都可以访问）
+                .antMatchers("/test/*","/swagger-ui.html","/swagger-ui/*", "/swagger-resources/**",
+                        "/v2/api-docs", "/v3/api-docs", "/webjars/**").permitAll()
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/login").anonymous()
                 //注销接口需要认证才能访问
