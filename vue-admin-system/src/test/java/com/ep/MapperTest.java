@@ -1,7 +1,9 @@
 package com.ep;
 
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.toolkit.SqlRunner;
 import com.ep.modules.system.entity.User;
 import com.ep.modules.system.mapper.UserMapper;
 import org.junit.Test;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+
 import java.util.List;
+import java.util.Map;
 
 /***
  * @author dep
@@ -40,5 +44,12 @@ public class MapperTest {
         User user = userMapper.selectOne(lambdaQueryWrapper);
 
         System.out.println(user);
+    }
+
+    @Test
+    public void testSQLSession() {
+        String sql = "select * from sys_user";
+        List<Map<String, Object>> maps = SqlRunner.db().selectList(sql);
+        System.out.println(maps);
     }
 }
