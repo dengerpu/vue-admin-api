@@ -21,7 +21,7 @@ public class CommonController {
     private CommonService commonService;
 
     @PostMapping("/query")
-    public ResultInfo CommonQuery(@RequestBody JSONObject json) {
+    public ResultInfo CommonQuery(@RequestBody JSONObject json) throws Exception {
         return this.commonService.query(json);
     }
 }

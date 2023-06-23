@@ -1,5 +1,6 @@
 package com.ep.modules.system.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.ep.modules.system.service.CommonService;
 import com.ep.modules.system.service.SQLService;
@@ -20,14 +21,37 @@ public class CommonServiceImpl implements CommonService {
     private SQLService sqlService;
 
     @Override
-    public ResultInfo query(JSONObject json) {
+    public ResultInfo query(JSONObject json) throws Exception {
         ResultInfo resultInfo = new ResultInfo();
+        List<Object> data = null;
         if (json.get("sql") != null) {
             String Sql = json.getString("sql");
-            List<Object> objects = this.sqlService.selectListBySQL(Sql);
-            resultInfo.setCode(1);
-            resultInfo.setData(objects);
+            data = this.sqlService.selectListBySQL(Sql);
+        }else if(json.get("table") != null) {
+            String sql = "";
+            JSONObject table = (JSONObject) JSONObject.toJSON(json.get("table"));
+            if (table.get("name") == null) {
+                throw new Exception("You must pass in the table name");
+            }else {
+                if (table.get("fields") != null) {
+                    sql = "SELECT " +  table.get("fields") + " FROM " + table.get("name");
+                } else {
+                    sql = "SELECT * FROM " + table.get("name");
+                }
+                if (table.get("filter") != null) {
+                    sql += " WHERE 1 = 1";
+                    JSONArray filters = (JSONArray) JSONObject.toJSON(table.get("filter"));
+                    for (int i = 0; i < filters.size(); i++) {
+                        JSONObject filter = filters.getJSONObject(i);
+
+                    }
+                }
+                data = this.sqlService.selectListBySQL(sql);
+            }
         }
+
+        resultInfo.setCode(1);
+        resultInfo.setData(data);
         return resultInfo;
     }
 }

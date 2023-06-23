@@ -10,5 +10,5 @@ import com.ep.utils.ResultInfo;
  */
 public interface CommonService {
 
-    ResultInfo query(JSONObject json);
+    ResultInfo query(JSONObject json) throws Exception;
 }
