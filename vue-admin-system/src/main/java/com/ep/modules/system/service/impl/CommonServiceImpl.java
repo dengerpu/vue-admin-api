@@ -5,10 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.ep.modules.system.service.CommonService;
 import com.ep.modules.system.service.SQLService;
 import com.ep.utils.ResultInfo;
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /***
  * @author dep
@@ -39,11 +41,50 @@ public class CommonServiceImpl implements CommonService {
                     sql = "SELECT * FROM " + table.get("name");
                 }
                 if (table.get("filter") != null) {
-                    sql += " WHERE 1 = 1";
+                    sql += " WHERE ";
                     JSONArray filters = (JSONArray) JSONObject.toJSON(table.get("filter"));
                     for (int i = 0; i < filters.size(); i++) {
                         JSONObject filter = filters.getJSONObject(i);
-
+                        if (filter.get("and") != null) {
+                            JSONArray filtersAnd = (JSONArray) JSONObject.toJSON(filter.get("and"));
+                            JSONObject filtersAndObject = (JSONObject) JSONObject.toJSON(filtersAnd.get(0));
+                            if (i == 0) {
+                                sql += "(";
+                            } else {
+                                sql += " AND (";
+                            }
+                            for (Map.Entry<String, Object> entry : filtersAndObject.entrySet()) {
+                                sql += entry.getKey();
+                                JSONObject valueJson =  (JSONObject) JSONObject.toJSON(entry.getValue());
+                                for(Map.Entry<String, Object> entry1 : valueJson.entrySet()) {
+                                    sql += entry1.getKey();
+                                    sql += ("'" + entry1.getValue() + "'");
+                                }
+                                sql += " AND ";
+                            }
+                            sql = sql.substring(0, sql.length() - 5);
+                            sql += ")";
+                        }
+                        if (filter.get("or") != null) {
+                            JSONArray filtersAnd = (JSONArray) JSONObject.toJSON(filter.get("or"));
+                            JSONObject filtersOrObject = (JSONObject) JSONObject.toJSON(filtersAnd.get(0));
+                            if (i == 0) {
+                                sql += "(";
+                            } else {
+                                sql += " OR (";
+                            }
+                            for (Map.Entry<String, Object> entry : filtersOrObject.entrySet()) {
+                                sql += entry.getKey();
+                                JSONObject valueJson =  (JSONObject) JSONObject.toJSON(entry.getValue());
+                                for(Map.Entry<String, Object> entry1 : valueJson.entrySet()) {
+                                    sql += entry1.getKey();
+                                    sql += ("'" + entry1.getValue() + "'");
+                                }
+                                sql += " OR ";
+                            }
+                            sql = sql.substring(0, sql.length() - 4);
+                            sql += ")";
+                        }
                     }
                 }
                 data = this.sqlService.selectListBySQL(sql);
