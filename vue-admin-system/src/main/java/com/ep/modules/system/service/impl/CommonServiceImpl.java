@@ -5,10 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.ep.modules.system.service.CommonService;
 import com.ep.modules.system.service.SQLService;
 import com.ep.utils.ResultInfo;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +28,7 @@ public class CommonServiceImpl implements CommonService {
     public ResultInfo query(JSONObject json) throws Exception {
         ResultInfo resultInfo = new ResultInfo();
         List<Object> data = null;
+        Integer count = 0;
         if (json.get("sql") != null) {
             String Sql = json.getString("sql");
             data = this.sqlService.selectListBySQL(Sql);
@@ -87,12 +90,35 @@ public class CommonServiceImpl implements CommonService {
                         }
                     }
                 }
+
+                if (table.get("group") != null) {
+                    sql += (" GROUP BY " + "'" +  table.get("group") + "'");
+                }
+
+                if (table.get("order") != null) {
+                    sql += (" ORDER BY " + "'" + table.get("order") + "'");
+                }
+                String CountSql = "SELECT COUNT(*) " + sql.substring(sql.indexOf("FROM"));
+                count = this.sqlService.selectCountBySQL(CountSql);
+                if (table.get("page") != null || table.get("size") != null) {
+                    int page = 1;
+                    int size = 10;
+                    if (table.get("page") != null) {
+                        page = (Integer) table.get("page");
+                    }
+                    if (table.get("size") != null) {
+                        size = (Integer) table.get("size");
+                    }
+                    sql += (" limit " + (page - 1) * size + " , " + page *size);
+                }
                 data = this.sqlService.selectListBySQL(sql);
             }
         }
-
+        Map<String, Object> map = new HashMap<>();
+        map.put("rows", data);
+        map.put("count", count);
         resultInfo.setCode(1);
-        resultInfo.setData(data);
+        resultInfo.setData(map);
         return resultInfo;
     }
 }

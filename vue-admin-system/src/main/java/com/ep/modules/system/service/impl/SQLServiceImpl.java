@@ -20,4 +20,9 @@ public class SQLServiceImpl implements SQLService {
         List<Map<String, Object>> maps = SqlRunner.db().selectList(SQL);
         return (List<T>) maps;
     }
+
+    @Override
+    public Integer selectCountBySQL(String SQL) {
+        return SqlRunner.db().selectCount(SQL);
+    }
 }
