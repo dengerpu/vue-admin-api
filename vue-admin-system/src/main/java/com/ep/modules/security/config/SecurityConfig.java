@@ -1,6 +1,7 @@
 package com.ep.modules.security.config;
 
 import com.ep.modules.security.filter.JwtAuthenticationTokenFilter;
+import com.ep.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 // 关闭默认注销接口
                 .logout().disable()
+                // 记住我
+                .rememberMe()
+                .tokenValiditySeconds(JwtUtil.JWT_TTL.intValue())
+                .and()
                 //不通过Session获取SecurityContext
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
