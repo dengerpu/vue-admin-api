@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.ep.modules.system.service.CommonService;
 import com.ep.utils.ResultInfo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,15 @@ public class CommonController {
     @Autowired
     private CommonService commonService;
 
+    @ApiOperation("通用查询接口")
     @PostMapping("/query")
     public ResultInfo CommonQuery(@RequestBody JSONObject json) throws Exception {
         return this.commonService.query(json);
+    }
+
+    @ApiOperation("通用查询/修改/删除接口")
+    @PostMapping("/save")
+    public ResultInfo CommonSave(@RequestBody JSONObject json) throws Exception {
+        return this.commonService.save(json);
     }
 }

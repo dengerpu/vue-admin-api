@@ -25,4 +25,19 @@ public class SQLServiceImpl implements SQLService {
     public Integer selectCountBySQL(String SQL) {
         return SqlRunner.db().selectCount(SQL);
     }
+
+    @Override
+    public Boolean insertBySQL(String SQL) {
+        return SqlRunner.db().insert(SQL);
+    }
+
+    @Override
+    public Boolean deleteBySQL(String SQL) {
+        return SqlRunner.db().delete(SQL);
+    }
+
+    @Override
+    public Boolean updateBySQL(String SQL) {
+        return SqlRunner.db().update(SQL);
+    }
 }

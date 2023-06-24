@@ -27,4 +27,19 @@ public interface SQLService {
      * @return
      */
     Integer selectCountBySQL(@NotNull String SQL);
+
+    /***
+     * 插入数据
+     */
+    Boolean insertBySQL(@NotNull String SQL);
+
+    /***
+     * 删除数据
+     */
+    Boolean deleteBySQL(@NotNull String SQL);
+
+    /***
+     * 修改数据
+     */
+    Boolean updateBySQL(@NotNull String SQL);
 }
